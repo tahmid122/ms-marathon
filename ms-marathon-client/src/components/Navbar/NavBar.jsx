@@ -14,6 +14,12 @@ const NavBar = () => {
       <li>
         <NavLink to={"/marathons"}>Marathons</NavLink>
       </li>
+      <li>
+        <NavLink to={"/about"}>About</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/contact"}>Contact</NavLink>
+      </li>
       {user ? (
         <>
           <li>

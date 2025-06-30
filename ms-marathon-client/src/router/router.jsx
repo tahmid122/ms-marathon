@@ -13,6 +13,8 @@ import DashBoardLayout from "../layouts/DashBoardLayout";
 import AddMarathon from "../pages/AddMarathon/AddMarathon";
 import MyMarathonList from "../pages/MyMarathonList/MyMarathonList";
 import MyApplyList from "../pages/MyApplyList/MyApplyList";
+import About from "../pages/About/About";
+import Contact from "../pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +24,8 @@ export const router = createBrowserRouter([
       { index: true, Component: Home, loader: () => fetch("/bannerData.json") },
       { path: "login", Component: Login },
       { path: "register", Component: Register },
+      { path: "about", Component: About },
+      { path: "contact", Component: Contact },
       {
         path: "marathons",
         element: (

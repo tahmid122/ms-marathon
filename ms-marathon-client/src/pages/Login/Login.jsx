@@ -49,7 +49,7 @@ const Login = () => {
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-[450px] mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style"
+            className="flex w-full min-h-full flex-col justify-center px-6  lg:px-8 lg:w-[450px] mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style"
           >
             <div className="">
               <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">

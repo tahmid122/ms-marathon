@@ -14,7 +14,7 @@ const Banner = ({ bannerData }) => {
   return (
     <div>
       <Swiper
-        navigation={true}
+        navigation={false}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,

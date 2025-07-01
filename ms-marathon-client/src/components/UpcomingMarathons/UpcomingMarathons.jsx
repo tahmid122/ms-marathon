@@ -13,7 +13,7 @@ const UpcomingMarathons = ({ upcomingDataPromise }) => {
           Ready for race
         </h3>
       </div>
-      <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 dark:text-white">
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-4 dark:text-white">
         {upcomingData?.map((data, index) => (
           <UpcomingCard key={index} data={data} />
         ))}

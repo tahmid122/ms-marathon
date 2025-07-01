@@ -7,7 +7,11 @@ const MarathonCard = ({ marathon }) => {
   const { title, startDate, endDate, location, distance, _id, image } =
     marathon;
   return (
-    <div className="dark:shadow-xs rounded dark:shadow-slate-500 card-style">
+    <div
+      data-aos="fade-down"
+      data-aos-duration="1000"
+      className="dark:shadow-xs rounded dark:shadow-slate-500 card-style"
+    >
       <div>
         <img
           className="h-[200px] w-full object-cover"

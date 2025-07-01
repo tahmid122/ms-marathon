@@ -40,7 +40,7 @@ const NavBar = () => {
       .catch((error) => toast.error(error.message));
   };
   return (
-    <div className="lg:w-11/12 mx-auto">
+    <div className="lg:w-11/12 mx-auto sticky top-0 left-0 z-30">
       <ModeToggler />
       <div className="navbar bg-base-100 dark:bg-slate-900">
         <div className="navbar-start">

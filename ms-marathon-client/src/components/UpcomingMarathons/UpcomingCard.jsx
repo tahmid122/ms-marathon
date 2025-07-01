@@ -2,7 +2,11 @@ import React from "react";
 
 const UpcomingCard = ({ data }) => {
   return (
-    <div className="dark:shadow-xs dark:shadow-slate-500 rounded card-style">
+    <div
+      data-aos="fade-down"
+      data-aos-duration="1000"
+      className="dark:shadow-xs dark:shadow-slate-500 rounded card-style"
+    >
       <div>
         <img
           className="h-[250px] w-full object-cover"

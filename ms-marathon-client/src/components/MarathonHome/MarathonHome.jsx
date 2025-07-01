@@ -35,7 +35,7 @@ const MarathonHome = () => {
         </span>
         <h3 className="uppercase text-3xl font-bold italic ">Races abroad</h3>
       </div>
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {marathons?.map((marathon) => (
           <MarathonCard key={marathon._id} marathon={marathon} />
         ))}

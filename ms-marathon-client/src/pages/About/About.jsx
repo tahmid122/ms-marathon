@@ -9,7 +9,7 @@ const About = () => {
           About
         </h3>
         <div className="mt-5">
-          <section className="pt-0 pb-16 px-4 md:px-10 lg:px-20">
+          <section className="pt-0 pb-16 lg:px-20">
             <div className="max-w-6xl mx-auto">
               <p className="text-lg text-slate-600 dark:text-white mb-10 text-center max-w-3xl mx-auto">
                 <span className="font-semibold">MS Marathon</span> isn’t just a

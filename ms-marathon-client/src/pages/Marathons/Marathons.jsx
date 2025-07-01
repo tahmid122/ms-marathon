@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { BoxReveal } from "@/components/magicui/box-reveal";
 
 const Marathons = () => {
   const axiosSecure = useAxiosSecure();
@@ -47,10 +48,13 @@ const Marathons = () => {
   return (
     <>
       <div className="w-11/12 mx-auto my-10">
-        <div className="flex items-center justify-between">
-          <h3 className="uppercase text-3xl font-bold italic dark:text-white">
-            All Marathons
-          </h3>
+        <div className="flex items-center justify-between gap-3">
+          <BoxReveal>
+            <h3 className="uppercase text-3xl font-bold italic dark:text-white">
+              Marathons
+            </h3>
+          </BoxReveal>
+
           <div>
             <div className="">
               <div className="relative">

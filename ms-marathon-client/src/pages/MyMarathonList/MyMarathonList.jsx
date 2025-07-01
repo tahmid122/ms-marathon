@@ -8,6 +8,7 @@ import Modal2 from "../../components/Modal/Modal2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { BoxReveal } from "@/components/magicui/box-reveal";
 
 const MyMarathonList = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -70,9 +71,11 @@ const MyMarathonList = () => {
     <>
       {marathonList.length > 0 ? (
         <div className="w-11/12 mx-auto my-10 min-h-[70vh]">
-          <h3 className="uppercase text-3xl font-bold italic dark:text-white">
-            My Marathon List
-          </h3>
+          <BoxReveal>
+            <h3 className="uppercase text-3xl font-bold italic dark:text-white">
+              Marathon List
+            </h3>
+          </BoxReveal>
 
           <div className="overflow-x-auto">
             <table className="table dark:text-white text-center mt-10">

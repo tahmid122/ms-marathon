@@ -39,7 +39,7 @@ const AddMarathon = () => {
   };
   return (
     <>
-      <div className="w-11/12 mx-auto py-5">
+      <div className="lg:w-11/12 mx-auto py-5">
         <>
           <div className="w-11/12 mx-auto min-h-[75vh] flex items-center justify-center">
             <motion.div

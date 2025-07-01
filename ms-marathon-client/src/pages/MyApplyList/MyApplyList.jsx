@@ -7,6 +7,7 @@ import Modal from "../../components/Modal/Modal";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { BoxReveal } from "@/components/magicui/box-reveal";
 
 const MyApplyList = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -86,10 +87,13 @@ const MyApplyList = () => {
     <>
       <div className="w-11/12 mx-auto my-10 min-h-[70vh]">
         <div>
-          <div className="grid grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-3">
-            <h3 className="uppercase text-3xl font-bold italic dark:text-white">
-              My Apply List
-            </h3>
+          <div className="grid grid-cols-1 gap-5 lg:gap-0 md:grid-cols-2 lg:grid-cols-3">
+            <BoxReveal>
+              <h3 className="uppercase text-3xl font-bold italic dark:text-white">
+                Apply List
+              </h3>
+            </BoxReveal>
+
             <div>
               <div className="grow">
                 <form className="w-full">

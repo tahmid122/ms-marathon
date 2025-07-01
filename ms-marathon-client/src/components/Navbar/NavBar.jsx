@@ -99,7 +99,7 @@ const NavBar = () => {
             to={"/"}
             className="text-3xl font-bold items-center text-transparent hidden lg:flex bg-gradient-to-r from-[#422ad5]  to-black bg-clip-text dark:bg-gradient-to-r dark:from-white dark:to-[#422ad5]"
           >
-            MS <span className="text-5xl">🏃</span> Marathon
+            MS<span className="text-5xl">🏃</span> Marathon
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

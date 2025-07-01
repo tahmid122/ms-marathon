@@ -30,7 +30,7 @@ const MarathonHome = () => {
 
   return (
     <div className="my-10 dark:bg-slate-900 dark:text-white">
-      <Title title={"Races abroad"} tagline={"Our favorites"} />
+      <Title title={"Race abroad"} tagline={"Our favorites"} />
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {marathons?.map((marathon) => (
           <MarathonCard key={marathon._id} marathon={marathon} />

@@ -1,10 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { getFormData } from "../../utils/getFormData";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
-
+import { motion } from "motion/react";
+import Lottie from "lottie-react";
+import loginAnimation from "../../assets/login2.json";
 const Login = () => {
   const { signInUserWithGoogle, signInUser, setLoading } = useAuth();
   const navigate = useNavigate();
@@ -45,15 +48,20 @@ const Login = () => {
         <title>Login</title>
       </Helmet>
       <div className="py-5">
-        <div className="my-5 w-11/12 mx-auto min-h-[75vh] flex items-center justify-center">
-          <div className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-full md:w-10/12 lg:w-6/12 mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="my-5 w-full lg:w-11/12 mx-auto min-h-[75vh] flex items-center justify-center gap-10 flex-col-reverse lg:flex-row overflow-hidden p-3">
+          <motion.div
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-[450px] mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style"
+          >
+            <div className="">
               <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
                 Login
               </h2>
             </div>
 
-            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div className="mt-10">
               <form onSubmit={handleLogin} className="space-y-6">
                 <div>
                   <label
@@ -154,6 +162,17 @@ const Login = () => {
                 </button>
               </div>
             </div>
+          </motion.div>
+          <div
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            className="flex-1 w-full"
+          >
+            <Lottie
+              animationData={loginAnimation}
+              loop={true}
+              className="h-[30vh] lg:h-[70vh] w-full"
+            />
           </div>
         </div>
       </div>

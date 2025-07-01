@@ -22,9 +22,31 @@ const NavBar = () => {
       </li>
       {user ? (
         <>
-          <li>
-            <NavLink to={"/dashboard"}>Dashboard</NavLink>
+          <li className="relative group/card hidden lg:block">
+            <span>Dashboard</span>
+            <ul className="absolute scale-0 group-hover/card:scale-100 transition-transform duration-500 left-0 top-10 text-start  bg-white w-[180px] p-1 rounded-md dark:bg-slate-900 dark:text-white dark:border dark:border-slate-600 ">
+              <li>
+                <NavLink to={"add-marathon"}>Add Marathon</NavLink>
+              </li>
+              <li>
+                <NavLink to={"my-marathon-list"}>My Marathon List</NavLink>
+              </li>
+              <li>
+                <NavLink to={"my-apply-list"}>My Apply List</NavLink>
+              </li>
+            </ul>
           </li>
+          <>
+            <li className="block lg:hidden">
+              <NavLink to={"add-marathon"}>Add Marathon</NavLink>
+            </li>
+            <li className="block lg:hidden">
+              <NavLink to={"my-marathon-list"}>My Marathon List</NavLink>
+            </li>
+            <li className="block lg:hidden">
+              <NavLink to={"my-apply-list"}>My Apply List</NavLink>
+            </li>
+          </>
         </>
       ) : (
         ""

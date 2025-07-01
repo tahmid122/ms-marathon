@@ -73,37 +73,44 @@ const MyMarathonList = () => {
         <title>My Marathon List</title>
       </Helmet>
       {marathonList.length > 0 ? (
-        <div>
-          <table className="table w-full dark:text-white text-center">
-            {/* head */}
-            <thead className="dark:text-white">
-              <tr>
-                <th>Serial</th>
-                <th>Photo</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Location</th>
-                <th>Registration Start</th>
-                <th>Registration End</th>
-                <th>Marathon Start</th>
-                <th>Distance</th>
-                <th>Total Registration</th>
-                <th className="text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-              {marathonList.map((marathon, index) => (
-                <MyMarathonRow
-                  key={marathon._id}
-                  marathon={marathon}
-                  index={index}
-                  handleDelete={handleDelete}
-                  setSpecificMarathon={setSpecificMarathon}
-                />
-              ))}
-            </tbody>
-          </table>
+        <div className="w-11/12 mx-auto my-10 min-h-[70vh]">
+          <h3 className="uppercase text-3xl font-bold italic dark:text-white">
+            My Marathon List
+          </h3>
+
+          <div className="overflow-x-auto">
+            <table className="table dark:text-white text-center mt-10">
+              {/* head */}
+              <thead className="dark:text-white">
+                <tr>
+                  <th>Serial</th>
+                  <th>Photo</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Location</th>
+                  <th>Registration Start</th>
+                  <th>Registration End</th>
+                  <th>Marathon Start</th>
+                  <th>Distance</th>
+                  <th>Total Registration</th>
+                  <th className="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* row 1 */}
+                {marathonList.map((marathon, index) => (
+                  <MyMarathonRow
+                    key={marathon._id}
+                    marathon={marathon}
+                    index={index}
+                    handleDelete={handleDelete}
+                    setSpecificMarathon={setSpecificMarathon}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
+
           <div>
             <Modal2
               specificMarathon={specificMarathon}

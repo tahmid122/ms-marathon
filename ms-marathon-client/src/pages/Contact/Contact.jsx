@@ -7,12 +7,12 @@ const Contact = () => {
       <Helmet>
         <title>Contact</title>
       </Helmet>
-      <div className="w-11/12 mx-auto my-10 min-h-screen">
+      <div className="w-full p-4 lg:w-11/12 mx-auto my-10 min-h-screen">
         <h3 className="uppercase text-3xl font-bold italic dark:text-white">
           Contact
         </h3>
         <div className="mt-10 flex  items-center justify-center">
-          <form className="p-10 shadow-sm shadow-slate-400 w- border-t-4 w-full lg:w-6/12 border-t-[#422ad5]">
+          <form className=" p-4 lg:p-10 shadow-sm shadow-slate-400 w- border-t-4 w-full lg:w-6/12 border-t-[#422ad5]">
             <h3 className="uppercase text-3xl font-bold italic dark:text-white">
               Contact Form
             </h3>

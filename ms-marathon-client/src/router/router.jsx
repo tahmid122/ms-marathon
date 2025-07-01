@@ -50,28 +50,29 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-    ],
-  },
-  {
-    path: "/dashboard",
-    element: (
-      <ProtectedRoute>
-        <DashBoardLayout />
-      </ProtectedRoute>
-    ),
-    children: [
-      { index: true, Component: Dashboard },
       {
         path: "add-marathon",
-        Component: AddMarathon,
+        element: (
+          <ProtectedRoute>
+            <AddMarathon />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-marathon-list",
-        Component: MyMarathonList,
+        element: (
+          <ProtectedRoute>
+            <MyMarathonList />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-apply-list",
-        Component: MyApplyList,
+        element: (
+          <ProtectedRoute>
+            <MyApplyList />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

@@ -9,6 +9,7 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 const Marathons = () => {
   const axiosSecure = useAxiosSecure();
   const [isLoading, setIsLoading] = useState(false);
+  const [sortValue, setSortValue] = useState("");
   const { user } = useAuth();
   const [marathons, setMarathons] = useState([]);
   useEffect(() => {
@@ -25,6 +26,7 @@ const Marathons = () => {
   }, [axiosSecure, user]);
   const handleSort = (e) => {
     const value = e.target.value;
+    setSortValue(value);
     if (!e.target.value) return;
     setIsLoading(true);
     axiosSecure
@@ -57,6 +59,7 @@ const Marathons = () => {
             <div className="">
               <div className="relative">
                 <select
+                  value={sortValue}
                   className="w-full bg-transparent placeholder:text-slate-400  text-black text-sm border border-slate-200 rounded pl-3 pr-8 py-1.5 transition duration-300 ease focus:outline-none hover:border-[#422ad5] shadow-sm focus:shadow-md appearance-none cursor-pointer dark:text-white dark:bg-slate-900"
                   onChange={handleSort}
                 >
@@ -83,7 +86,7 @@ const Marathons = () => {
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 dark:text-white">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 dark:text-white">
           {marathons?.map((marathon) => (
             <MarathonCard key={marathon._id} marathon={marathon} />
           ))}

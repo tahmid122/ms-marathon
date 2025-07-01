@@ -40,7 +40,7 @@ const AddMarathon = () => {
       <Helmet>
         <title>Add Marathon</title>
       </Helmet>
-      <div className="w-11/12 mx-auto pb-5">
+      <div className="w-11/12 mx-auto py-5">
         <>
           <div className="w-11/12 mx-auto min-h-[75vh] flex items-center justify-center">
             <div className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-full md:w-10/12 lg:w-6/12 mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style">

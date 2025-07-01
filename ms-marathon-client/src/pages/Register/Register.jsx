@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
@@ -6,6 +7,9 @@ import { IoMdEyeOff, IoMdEye } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
 import { getFormData } from "../../utils/getFormData";
 import toast from "react-hot-toast";
+import { motion } from "motion/react";
+import registerAnimation from "../../assets/register.json";
+import Lottie from "lottie-react";
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -43,15 +47,20 @@ const Register = () => {
       <Helmet>
         <title>Register</title>
       </Helmet>
-      <div className="w-11/12 mx-auto py-5">
-        <div className="flex min-h-full flex-col justify-center px-6  lg:px-8 md:w-10/12 lg:w-6/12 mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="my-5 w-full lg:w-11/12 mx-auto min-h-[75vh] flex items-center justify-center gap-10 flex-col-reverse lg:flex-row overflow-hidden p-3">
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+          className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-[450px] mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style"
+        >
+          <div className="">
             <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
               Register
             </h2>
           </div>
 
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="mt-10">
             <form onSubmit={handleRegistration} className="space-y-6">
               <div>
                 <label
@@ -148,6 +157,17 @@ const Register = () => {
               </Link>
             </p>
           </div>
+        </motion.div>
+        <div
+          data-aos="fade-left"
+          data-aos-duration="1000"
+          className="flex-1 w-full"
+        >
+          <Lottie
+            animationData={registerAnimation}
+            loop={true}
+            className="h-[30vh] lg:h-[70vh] w-full"
+          />
         </div>
       </div>
     </>

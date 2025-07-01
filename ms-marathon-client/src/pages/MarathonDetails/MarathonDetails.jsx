@@ -7,6 +7,7 @@ import { FaExclamationCircle } from "react-icons/fa";
 import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { FaArrowLeftLong } from "react-icons/fa6";
 const MarathonDetails = () => {
   const axiosSecure = useAxiosSecure();
   const [isLoading, setIsLoading] = useState(false);
@@ -54,6 +55,9 @@ const MarathonDetails = () => {
   return (
     <>
       <div className="w-11/12 mx-auto my-10 dark:text-white">
+        <Link to={-1} className=" my-2 flex items-center gap-1">
+          <FaArrowLeftLong /> Back
+        </Link>
         <div className="">
           <img
             className="w-full h-[300px] lg:h-[500px]"

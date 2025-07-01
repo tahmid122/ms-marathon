@@ -12,6 +12,7 @@ const Modal = ({
 }) => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const [isTrue, setIsTrue] = useState(false);
   const buttonRef = useRef();
   const [application, setApplication] = useState({
     contactNumber: "",
@@ -31,6 +32,7 @@ const Modal = ({
     setGender(specificApplyData.gender);
   }, [specificApplyData]);
   const handleUpdate = (e) => {
+    setIsTrue(true);
     e.preventDefault();
     const updatedApplication = getFormData(e.target);
     axiosSecure
@@ -39,6 +41,7 @@ const Modal = ({
         updatedApplication
       )
       .then((res) => {
+        setIsTrue(false);
         if (res.data.modifiedCount) {
           toast.success("Successfully Updated");
           setSpecificApplyData({});
@@ -56,9 +59,16 @@ const Modal = ({
           });
           buttonRef.current.click();
           getApplications(user.email);
+        } else {
+          setIsTrue(false);
+          buttonRef.current.click();
+          toast.error("You did'nt update anything!");
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setIsTrue(false);
+        console.log(error);
+      });
   };
 
   return (
@@ -250,7 +260,11 @@ const Modal = ({
             </div>
             <div>
               <button type="submit" className="btn btn-style w-full">
-                Update
+                {isTrue ? (
+                  <span className="loading loading-spinner loading-md"></span>
+                ) : (
+                  "Update"
+                )}
               </button>
             </div>
           </form>

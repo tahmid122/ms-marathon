@@ -158,7 +158,7 @@ const MyApplyList = () => {
             <table className="table dark:text-white mt-10">
               {/* head */}
               <thead className="dark:text-white">
-                <tr>
+                <tr className="border border-base-content/5 dark:border-slate-700">
                   <th>Serial</th>
                   <th>Photo</th>
                   <th>Title</th>

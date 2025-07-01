@@ -10,6 +10,7 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const MarathonRegistration = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isTrue, setIsTrue] = useState(false);
 
   const axiosSecure = useAxiosSecure();
   const [marathon, setMaraThon] = useState({});
@@ -18,18 +19,23 @@ const MarathonRegistration = () => {
   const { id } = useParams();
   const { user } = useAuth();
   const handleRegistration = (e) => {
+    setIsTrue(true);
     e.preventDefault();
     const data = getFormData(e.target);
     data.marathonId = id;
     axiosSecure
       .post(`/participants?email=${user.email}`, data)
       .then((res) => {
+        setIsTrue(false);
         if (res.data.insertedId) {
           toast.success("Registration successful");
           navigate(`/marathon/${id}`);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setIsTrue(false);
+        console.log(error);
+      });
   };
   useEffect(() => {
     setIsLoading(true);
@@ -48,17 +54,17 @@ const MarathonRegistration = () => {
 
   return (
     <>
-      <div className="w-11/12 mx-auto my-10">
+      <div className="lg:w-11/12 mx-auto my-10">
         <>
-          <div className="my-5 w-11/12 mx-auto min-h-[75vh] flex items-center justify-center">
-            <div className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-full md:w-10/12 lg:w-6/12 mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style">
+          <div className="w-11/12 mx-auto min-h-[75vh] flex items-center justify-center">
+            <div className="flex border-t-4 border-t-[#422ad5] dark:border-t-white min-h-full flex-col justify-center px-6  lg:px-8 w-full md:w-10/12 lg:w-6/12 mx-auto py-10 rounded rounded-t-none shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
                   Marathon Registration
                 </h2>
               </div>
 
-              <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <div className="mt-10">
                 <form onSubmit={handleRegistration} className="space-y-6">
                   <div>
                     <label
@@ -204,7 +210,11 @@ const MarathonRegistration = () => {
                   </div>
                   <div>
                     <button type="submit" className="btn w-full btn-style">
-                      Register
+                      {isTrue ? (
+                        <span className="loading loading-spinner loading-md"></span>
+                      ) : (
+                        "Register"
+                      )}
                     </button>
                   </div>
                 </form>

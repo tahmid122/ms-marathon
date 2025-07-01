@@ -37,7 +37,7 @@ export default function Counter({ marathonStart }) {
     <div className="flex lg:flex-row  items-center justify-center gap-2 lg:gap-4 text-center flex-wrap">
       <CountdownCircleTimer
         {...timerProps}
-        colors="#7E2E80"
+        colors="gray"
         duration={daysDuration}
         initialRemainingTime={remainingTime}
       >
@@ -49,7 +49,7 @@ export default function Counter({ marathonStart }) {
       </CountdownCircleTimer>
       <CountdownCircleTimer
         {...timerProps}
-        colors="#D14081"
+        colors="gray"
         duration={daySeconds}
         initialRemainingTime={remainingTime % daySeconds}
         onComplete={(totalElapsedTime) => ({
@@ -64,7 +64,7 @@ export default function Counter({ marathonStart }) {
       </CountdownCircleTimer>
       <CountdownCircleTimer
         {...timerProps}
-        colors="#EF798A"
+        colors="gray"
         duration={hourSeconds}
         initialRemainingTime={remainingTime % hourSeconds}
         onComplete={(totalElapsedTime) => ({

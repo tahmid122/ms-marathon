@@ -13,10 +13,13 @@ const Contact = () => {
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
           className="mt-10 flex  items-center justify-center"
         >
-          <form className=" p-4 lg:p-10 shadow-sm shadow-slate-400 w- border-t-4 w-full lg:w-6/12 border-t-[#422ad5]">
-            <h3 className="uppercase text-3xl text-center lg:text-left font-bold italic dark:text-white">
-              Contact Form
-            </h3>
+          <form className=" p-4 lg:p-10 shadow-sm shadow-slate-400 w- border-t-4 w-full lg:w-6/12 border-t-[#422ad5] dark:border-t-white">
+            <BoxReveal>
+              <h3 className="uppercase text-3xl text-center lg:text-left font-bold italic dark:text-white">
+                Contact Form
+              </h3>
+            </BoxReveal>
+
             <p className="mt-5 text-sm">
               If you haven't found what you're looking for in the FAQ section of
               an event or have any other questions, feel free to send us your

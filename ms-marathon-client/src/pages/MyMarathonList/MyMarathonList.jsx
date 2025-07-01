@@ -78,10 +78,10 @@ const MyMarathonList = () => {
           </BoxReveal>
 
           <div className="overflow-x-auto">
-            <table className="table dark:text-white text-center mt-10">
+            <table className="table  dark:text-white text-center mt-10">
               {/* head */}
               <thead className="dark:text-white">
-                <tr>
+                <tr className="border border-base-content/5 dark:border-slate-700">
                   <th>Serial</th>
                   <th>Photo</th>
                   <th>Title</th>

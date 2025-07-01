@@ -24,7 +24,7 @@ const MyApplyListRow = ({
   } = apply;
   return (
     <>
-      <tr>
+      <tr className="border border-base-content/5 dark:border-slate-700">
         <th> {index + 1}</th>
         <td>
           <img className="h-14 w-14 object-cover rounded" src={image} alt="" />

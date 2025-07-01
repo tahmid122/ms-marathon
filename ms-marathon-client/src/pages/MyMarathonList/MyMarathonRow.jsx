@@ -24,7 +24,7 @@ const MyMarathonRow = ({
 
   return (
     <>
-      <tr>
+      <tr className="border border-base-content/5 dark:border-slate-700">
         <th> {index + 1}</th>
         <td>
           <img className="h-14 w-14 object-cover rounded" src={image} alt="" />
@@ -49,7 +49,7 @@ const MyMarathonRow = ({
               document.getElementById("my_modal_4").showModal();
               setSpecificMarathon(marathon);
             }}
-            className="p-2 hover:bg-primary hover:text-white  rounded shadow-sm border border-slate-100 cursor-pointer dark:border-none dark:shadow-sm dark:shadow-slate-300"
+            className="p-2 btn-style rounded shadow-sm border border-slate-100 cursor-pointer dark:border-none dark:shadow-sm dark:shadow-slate-300"
             title="Update"
           >
             <FaPenClip size={18} />

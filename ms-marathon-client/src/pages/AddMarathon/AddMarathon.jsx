@@ -14,10 +14,12 @@ const AddMarathon = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const [isTrue, setIsTrue] = useState(false);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [marathonStartDate, setMarathonStartDate] = useState(null);
   const handleAddMarathon = (e) => {
+    setIsTrue(true);
     e.preventDefault();
     const data = getFormData(e.target);
     data.createdAt = new Date();
@@ -31,8 +33,9 @@ const AddMarathon = () => {
       .post(`/marathons?email=${user.email}`, data)
       .then((res) => {
         if (res.data.insertedId) {
+          setIsTrue(false);
           toast.success("Successfully created marathon");
-          navigate("/dashboard/my-marathon-list");
+          navigate("/my-marathon-list");
         }
       })
       .catch((error) => console.log(error.message));
@@ -46,7 +49,7 @@ const AddMarathon = () => {
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="flex border-t-4 border-t-[#422ad5] min-h-full flex-col justify-center px-6  lg:px-8 w-full md:w-10/12 lg:w-6/12 mx-auto py-10 rounded rounded-t-none shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style"
+              className="flex border-t-4 border-t-[#422ad5] dark:border-t-white min-h-full flex-col justify-center px-6  lg:px-8 w-full md:w-10/12 lg:w-6/12 mx-auto py-10 rounded rounded-t-none shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style"
             >
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
@@ -68,6 +71,7 @@ const AddMarathon = () => {
                         id="title"
                         name="title"
                         type="text"
+                        required
                         className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6 dark:bg-slate-900 dark:text-white"
                       />
                     </div>
@@ -218,7 +222,11 @@ const AddMarathon = () => {
                   </div>
                   <div>
                     <button type="submit" className="btn btn-style w-full">
-                      Submit
+                      {isTrue ? (
+                        <span className="loading loading-spinner loading-md"></span>
+                      ) : (
+                        "Add"
+                      )}
                     </button>
                   </div>
                 </form>

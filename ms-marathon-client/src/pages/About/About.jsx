@@ -1,3 +1,4 @@
+import { BoxReveal } from "@/components/magicui/box-reveal";
 import React from "react";
 import { Link } from "react-router";
 
@@ -5,9 +6,12 @@ const About = () => {
   return (
     <>
       <div className="w-11/12 mx-auto my-10 min-h-screen">
-        <h3 className="uppercase text-3xl font-bold italic dark:text-white">
-          About
-        </h3>
+        <BoxReveal>
+          <h3 className="uppercase text-3xl font-bold italic dark:text-white">
+            About
+          </h3>
+        </BoxReveal>
+
         <div className="mt-5">
           <section className="pt-0 pb-16 lg:px-20">
             <div className="max-w-6xl mx-auto">

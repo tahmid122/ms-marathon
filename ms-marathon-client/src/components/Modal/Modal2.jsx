@@ -18,6 +18,8 @@ const Modal2 = ({ setSpecificMarathon, specificMarathon, getMarathonList }) => {
     title: "",
   });
   const { user } = useAuth();
+  const [isTrue, setIsTrue] = useState(false);
+
   const buttonRef = useRef();
   const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState(null);
@@ -30,6 +32,7 @@ const Modal2 = ({ setSpecificMarathon, specificMarathon, getMarathonList }) => {
     setMarathonStartDate(specificMarathon.marathonStart);
   }, [specificMarathon]);
   const handleUpdate = (e) => {
+    setIsTrue(true);
     e.preventDefault();
     const formData = getFormData(e.target);
     formData.startDate = startDate;
@@ -38,6 +41,7 @@ const Modal2 = ({ setSpecificMarathon, specificMarathon, getMarathonList }) => {
     axiosSecure
       .put(`/marathons?id=${marathon._id}&email=${user.email}`, formData)
       .then((res) => {
+        setIsTrue(false);
         if (res.data.modifiedCount) {
           toast.success("Successfully Updated");
           setSpecificMarathon({});
@@ -253,7 +257,11 @@ const Modal2 = ({ setSpecificMarathon, specificMarathon, getMarathonList }) => {
             </div>
             <div>
               <button type="submit" className="btn btn-style w-full">
-                Update
+                {isTrue ? (
+                  <span className="loading loading-spinner loading-md"></span>
+                ) : (
+                  "Update"
+                )}
               </button>
             </div>
           </form>

@@ -5,7 +5,7 @@ const UpcomingCard = ({ data }) => {
     <div
       data-aos="fade-down"
       data-aos-duration="1000"
-      className="dark:shadow-xs dark:shadow-slate-500 rounded card-style"
+      className="dark:shadow-xs dark:shadow-slate-500 rounded "
     >
       <div>
         <img

@@ -12,7 +12,7 @@ import { Link } from "react-router";
 
 const Banner = ({ bannerData }) => {
   return (
-    <div>
+    <div data-aos="fade-down" data-aos-duration="2000">
       <Swiper
         navigation={false}
         autoplay={{

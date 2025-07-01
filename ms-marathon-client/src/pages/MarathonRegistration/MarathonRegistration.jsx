@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import dateFormatter from "../../utils/dateFormatter";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const MarathonRegistration = () => {
@@ -49,9 +48,6 @@ const MarathonRegistration = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Marathon Registration</title>
-      </Helmet>
       <div className="w-11/12 mx-auto my-10">
         <>
           <div className="my-5 w-11/12 mx-auto min-h-[75vh] flex items-center justify-center">

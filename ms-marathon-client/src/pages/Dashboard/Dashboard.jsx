@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { Helmet } from "react-helmet-async";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const Dashboard = () => {
@@ -26,9 +25,6 @@ const Dashboard = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Dashboard</title>
-      </Helmet>
       <div className="p-5 lg:p-0">
         <div className="flex items-center flex-col gap-5 justify-center lg:w-1/2 mx-auto p-5 shadow dark:shadow-xs dark:shadow-slate-500 card-style rounded">
           <div className="flex items-center justify-center flex-col gap-3">

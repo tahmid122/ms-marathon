@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router";
 import { IoMdEyeOff, IoMdEye } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
@@ -44,9 +43,6 @@ const Register = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Register</title>
-      </Helmet>
       <div className="my-5 w-full lg:w-11/12 mx-auto min-h-[75vh] flex items-center justify-center gap-10 flex-col-reverse lg:flex-row overflow-hidden p-3">
         <motion.div
           initial={{ scale: 0.8 }}

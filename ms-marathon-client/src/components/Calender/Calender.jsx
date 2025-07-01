@@ -1,5 +1,6 @@
 import React from "react";
 import { AnimatedTestimonials } from "../ui/animated-testimonials";
+import Title from "../Title/Title";
 
 const Calender = () => {
   const testimonials = [
@@ -42,14 +43,10 @@ const Calender = () => {
 
   return (
     <div className="my-10 dark:bg-slate-900">
-      <div>
-        <span className="uppercase text-primary text-xs font-semibold dark:text-white">
-          Every mile tells a story
-        </span>
-        <h3 className="uppercase text-3xl font-bold italic dark:text-white">
-          Voices of the runners
-        </h3>
-      </div>
+      <Title
+        title={"Voices of the runners"}
+        tagline={"Every mile tells a story"}
+      />
 
       <div data-aos="fade-down" data-aos-duration="1000" className="mt-10">
         <AnimatedTestimonials testimonials={testimonials} />

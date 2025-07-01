@@ -7,7 +7,6 @@ import Modal from "../../components/Modal/Modal";
 import Modal2 from "../../components/Modal/Modal2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
-import { Helmet } from "react-helmet-async";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const MyMarathonList = () => {
@@ -69,9 +68,6 @@ const MyMarathonList = () => {
 
   return (
     <>
-      <Helmet>
-        <title>My Marathon List</title>
-      </Helmet>
       {marathonList.length > 0 ? (
         <div className="w-11/12 mx-auto my-10 min-h-[70vh]">
           <h3 className="uppercase text-3xl font-bold italic dark:text-white">

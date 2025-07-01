@@ -3,7 +3,6 @@ import MarathonCard from "./MarathonCard";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-import { Helmet } from "react-helmet-async";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const Marathons = () => {
@@ -47,9 +46,6 @@ const Marathons = () => {
   if (isLoading) return <LoadingSpinner />;
   return (
     <>
-      <Helmet>
-        <title>All Marathons</title>
-      </Helmet>
       <div className="w-11/12 mx-auto my-10">
         <div className="flex items-center justify-between">
           <h3 className="uppercase text-3xl font-bold italic dark:text-white">

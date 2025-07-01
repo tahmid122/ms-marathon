@@ -7,7 +7,8 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { Helmet } from "react-helmet-async";
+import { motion } from "motion/react";
+
 const AddMarathon = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
@@ -37,20 +38,22 @@ const AddMarathon = () => {
   };
   return (
     <>
-      <Helmet>
-        <title>Add Marathon</title>
-      </Helmet>
       <div className="w-11/12 mx-auto py-5">
         <>
           <div className="w-11/12 mx-auto min-h-[75vh] flex items-center justify-center">
-            <div className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-full md:w-10/12 lg:w-6/12 mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style">
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="flex border-t-4 border-t-[#422ad5] min-h-full flex-col justify-center px-6  lg:px-8 w-full md:w-10/12 lg:w-6/12 mx-auto py-10 rounded rounded-t-none shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style"
+            >
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
                   Add Marathon
                 </h2>
               </div>
 
-              <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <div className="mt-10">
                 <form onSubmit={handleAddMarathon} className="space-y-6">
                   <div>
                     <label
@@ -219,7 +222,7 @@ const AddMarathon = () => {
                   </div>
                 </form>
               </div>
-            </div>
+            </motion.div>
           </div>
         </>
       </div>

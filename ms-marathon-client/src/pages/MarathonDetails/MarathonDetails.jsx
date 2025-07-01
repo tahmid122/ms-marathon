@@ -6,7 +6,6 @@ import useAuth from "../../hooks/useAuth";
 import { FaExclamationCircle } from "react-icons/fa";
 import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { Helmet } from "react-helmet-async";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 const MarathonDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -23,7 +22,6 @@ const MarathonDetails = () => {
     startDate,
     endDate,
     participants,
-    title,
     marathonStart,
   } = marathon;
   useEffect(() => {
@@ -55,9 +53,6 @@ const MarathonDetails = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{`Marathon Details of ${title}`}</title>
-      </Helmet>
       <div className="w-11/12 mx-auto my-10 dark:text-white">
         <div className="">
           <img

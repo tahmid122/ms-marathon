@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import Modal from "../../components/Modal/Modal";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
-import { Helmet } from "react-helmet-async";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const MyApplyList = () => {
@@ -85,9 +84,6 @@ const MyApplyList = () => {
 
   return (
     <>
-      <Helmet>
-        <title>My Apply List</title>
-      </Helmet>
       <div className="w-11/12 mx-auto my-10 min-h-[70vh]">
         <div>
           <div className="grid grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-3">

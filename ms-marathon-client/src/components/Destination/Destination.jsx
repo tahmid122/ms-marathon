@@ -1,19 +1,17 @@
 import React from "react";
 import SpotlightCard from "../../reactBits/SpotlightCard";
+import Title from "../Title/Title";
 
 const Destination = () => {
   return (
     <div className="my-10 dark:bg-slate-900">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
         <div className="lg:col-span-2">
-          <span className="uppercase text-primary text-xs font-semibold dark:text-white">
-            MS Marathon Is Everywhere!
-          </span>
-          <h3 className="uppercase text-3xl font-bold italic dark:text-white">
-            Destination highlights
-          </h3>
+          <Title
+            title={"Destination highlights"}
+            tagline={"MS Marathon Is Everywhere!"}
+          />
         </div>
-
         <div
           data-aos="zoom-in"
           data-aos-duration="1000"

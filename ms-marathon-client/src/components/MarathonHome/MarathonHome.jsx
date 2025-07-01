@@ -3,6 +3,7 @@ import MarathonCard from "./MarathonCard";
 import { useEffect } from "react";
 import { useState } from "react";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import Title from "../Title/Title";
 
 const MarathonHome = () => {
   const [marathons, setMarathons] = useState([]);
@@ -29,12 +30,7 @@ const MarathonHome = () => {
 
   return (
     <div className="my-10 dark:bg-slate-900 dark:text-white">
-      <div>
-        <span className="uppercase text-primary text-xs font-semibold dark:text-white">
-          Our favorites
-        </span>
-        <h3 className="uppercase text-3xl font-bold italic ">Races abroad</h3>
-      </div>
+      <Title title={"Races abroad"} tagline={"Our favorites"} />
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {marathons?.map((marathon) => (
           <MarathonCard key={marathon._id} marathon={marathon} />

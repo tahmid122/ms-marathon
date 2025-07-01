@@ -1,13 +1,9 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 
 const About = () => {
   return (
     <>
-      <Helmet>
-        <title>About</title>
-      </Helmet>
       <div className="w-11/12 mx-auto my-10 min-h-screen">
         <h3 className="uppercase text-3xl font-bold italic dark:text-white">
           About

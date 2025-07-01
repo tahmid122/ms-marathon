@@ -1,4 +1,0 @@
-[build]
-  base = "ms-marathon-client"
-  publish = "dist" # or use "build" if your output folder is named that
-  command = "npm install --legacy-peer-deps && npm run build"

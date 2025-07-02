@@ -17,6 +17,7 @@
 ### Participants/Registration part
 
 - **GET** request - `/participants` --- get registration details for a specific participant by email
+- **GET** request - `/marathon/participants` --- get all the participants details for a specific marathon
 - **POST** request - `/participants` --- create new registration details of participant
 - **PUT** request - `/participants` --- update an existing participant registration details
 - **DELETE** request - `/participants` --- delete a specific participant registration details by id

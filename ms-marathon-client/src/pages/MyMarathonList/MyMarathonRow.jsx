@@ -8,6 +8,7 @@ const MyMarathonRow = ({
   index,
   handleDelete,
   setSpecificMarathon,
+  getRegisterdParticipants,
 }) => {
   const {
     image,
@@ -32,7 +33,7 @@ const MyMarathonRow = ({
         <td title={title}>{title.slice(0, 20)}...</td>
         <td>
           {description.slice(0, 20)}
-          <Link to={`/marathon/${_id}`} className="text-primary font-xs">
+          <Link to={`/marathon/${_id}`} className="text-[#422ad5] font-xs">
             {" "}
             See more..
           </Link>
@@ -42,7 +43,18 @@ const MyMarathonRow = ({
         <td>{dateFormatter(endDate)}</td>
         <td>{dateFormatter(marathonStart)}</td>
         <td>{distance}</td>
-        <td>{totalRegistrationCount}</td>
+        <td>
+          {totalRegistrationCount}{" "}
+          <button
+            className="cursor-pointer text-[#422ad5] dark:text-white dark:font-bold"
+            onClick={() => {
+              getRegisterdParticipants(_id);
+              document.getElementById("my_modal_2").showModal();
+            }}
+          >
+            View
+          </button>
+        </td>
         <td className="flex items-center gap-3 justify-center mt-2">
           <span
             onClick={() => {

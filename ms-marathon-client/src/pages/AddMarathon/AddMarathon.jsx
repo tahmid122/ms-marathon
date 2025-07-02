@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { motion } from "motion/react";
+import { getPhotoURL } from "@/utils/getPhotoURL";
 
 const AddMarathon = () => {
   const axiosSecure = useAxiosSecure();
@@ -18,10 +19,11 @@ const AddMarathon = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [marathonStartDate, setMarathonStartDate] = useState(null);
-  const handleAddMarathon = (e) => {
+  const handleAddMarathon = async (e) => {
     setIsTrue(true);
     e.preventDefault();
     const data = getFormData(e.target);
+    const imgURL = await getPhotoURL(e.target.image.files[0]);
     data.createdAt = new Date();
     data.totalRegistrationCount = 0;
     data.participants = [];
@@ -29,6 +31,7 @@ const AddMarathon = () => {
     data.startDate = startDate;
     data.endDate = endDate;
     data.marathonStart = marathonStartDate;
+    data.image = imgURL;
     axiosSecure
       .post(`/marathons?email=${user.email}`, data)
       .then((res) => {
@@ -196,7 +199,7 @@ const AddMarathon = () => {
                     <div className="mt-2">
                       <input
                         name="image"
-                        type="text"
+                        type="file"
                         required
                         autoComplete="email"
                         className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6 dark:bg-slate-900 dark:text-white"

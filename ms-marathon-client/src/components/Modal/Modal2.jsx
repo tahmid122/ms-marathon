@@ -6,6 +6,7 @@ import { getFormData } from "../../utils/getFormData";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { getPhotoURL } from "@/utils/getPhotoURL";
 const Modal2 = ({ setSpecificMarathon, specificMarathon, getMarathonList }) => {
   const [marathon, setMarathon] = useState({
     description: "",
@@ -31,13 +32,14 @@ const Modal2 = ({ setSpecificMarathon, specificMarathon, getMarathonList }) => {
     setEndDate(specificMarathon.endDate);
     setMarathonStartDate(specificMarathon.marathonStart);
   }, [specificMarathon]);
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     setIsTrue(true);
     e.preventDefault();
     const formData = getFormData(e.target);
     formData.startDate = startDate;
     formData.endDate = endDate;
     formData.marathonStart = marathonStartDate;
+    formData.image = await getPhotoURL(e.target.image.files[0]);
     axiosSecure
       .put(`/marathons?id=${marathon._id}&email=${user.email}`, formData)
       .then((res) => {
@@ -225,12 +227,8 @@ const Modal2 = ({ setSpecificMarathon, specificMarathon, getMarathonList }) => {
               <div className="mt-2">
                 <input
                   name="image"
-                  type="text"
+                  type="file"
                   required
-                  value={marathon.image || ""}
-                  onChange={(e) =>
-                    setMarathon({ ...marathon, image: e.target.value })
-                  }
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6 dark:bg-slate-900 dark:text-white"
                 />
               </div>

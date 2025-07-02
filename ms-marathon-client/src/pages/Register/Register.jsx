@@ -9,14 +9,19 @@ import toast from "react-hot-toast";
 import { motion } from "motion/react";
 import registerAnimation from "../../assets/register.json";
 import Lottie from "lottie-react";
+import { getPhotoURL } from "@/utils/getPhotoURL";
 
 const Register = () => {
   const [show, setShow] = useState(false);
+  const [imgPreview, setImgPreview] = useState("");
   const { createUser, updateUser, setLoading, user, setUser } = useAuth();
+  const [isLoadingRegister, setIsLoadingRegister] = useState(false);
   const navigate = useNavigate();
-  const handleRegistration = (e) => {
+  const handleRegistration = async (e) => {
+    setIsLoadingRegister(true);
     e.preventDefault();
     const data = getFormData(e.target);
+    data.photoURL = await getPhotoURL(e.target.photoURL.files[0]);
     const regex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
     if (!regex.test(data.password)) {
       toast.error(
@@ -32,11 +37,13 @@ const Register = () => {
           updateUser(data.name, data.photoURL)
             .then(() => toast.success("Profile Updated"))
             .catch((error) => toast.error(error.message));
+          setIsLoadingRegister(false);
           navigate("/");
         }
       })
       .catch((error) => {
         toast.error(error.message);
+        setIsLoadingRegister(false);
         setLoading(false);
       });
   };
@@ -48,7 +55,7 @@ const Register = () => {
           initial={{ scale: 0.8 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-full lg:w-[450px] mx-auto py-10 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style"
+          className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-full lg:w-[450px] mx-auto py-5 rounded shadow-sm shadow-slate-400 dark:shadow-xs dark:shadow-slate-500 card-style"
         >
           <div className="">
             <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
@@ -84,11 +91,22 @@ const Register = () => {
                 <div className="mt-2">
                   <input
                     name="photoURL"
-                    type="text"
+                    onChange={(e) => {
+                      const url = URL.createObjectURL(e.target.files[0]);
+                      setImgPreview(url);
+                    }}
+                    type="file"
                     required
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6 dark:bg-slate-900 dark:text-white "
                   />
                 </div>
+                {imgPreview && (
+                  <img
+                    className="w-32 h-32 rounded mx-auto object-cover mt-2"
+                    src={imgPreview}
+                    alt=""
+                  />
+                )}
               </div>
               <div>
                 <label
@@ -137,8 +155,15 @@ const Register = () => {
               </div>
 
               <div>
-                <button type="submit" className="btn btn-style w-full">
-                  Register
+                <button
+                  type="submit"
+                  className="btn btn-style w-full text-center"
+                >
+                  {isLoadingRegister ? (
+                    <span className="loading loading-spinner text-white loading-md"></span>
+                  ) : (
+                    "Register"
+                  )}
                 </button>
               </div>
             </form>

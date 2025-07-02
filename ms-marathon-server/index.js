@@ -182,6 +182,19 @@ async function run() {
         res.send({ message: error.message });
       }
     });
+    //get specific marathons all participants details
+    app.get(
+      "/marathon/participants",
+      verifyToken,
+      verifyEmail,
+      async (req, res) => {
+        const { id } = req.query;
+        const result = await participantCollections
+          .find({ marathonId: id })
+          .toArray();
+        res.send(result);
+      }
+    );
     //post registration details of participant
     app.post("/participants", verifyToken, verifyEmail, async (req, res) => {
       try {

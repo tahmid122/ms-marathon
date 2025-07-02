@@ -23,6 +23,7 @@ const MarathonRegistration = () => {
     e.preventDefault();
     const data = getFormData(e.target);
     data.marathonId = id;
+    data.participantImage = user.photoURL;
     axiosSecure
       .post(`/participants?email=${user.email}`, data)
       .then((res) => {

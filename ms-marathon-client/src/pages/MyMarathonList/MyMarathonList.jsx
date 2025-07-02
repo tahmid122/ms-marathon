@@ -12,6 +12,8 @@ import { BoxReveal } from "@/components/magicui/box-reveal";
 
 const MyMarathonList = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isParticepants, setIsParticipants] = useState(false);
+  const [registeredParticipants, setRegisteredParticipants] = useState([]);
   const axiosSecure = useAxiosSecure();
   const [marathonList, setMarathonList] = useState([]);
   const [specificMarathon, setSpecificMarathon] = useState({});
@@ -40,6 +42,22 @@ const MyMarathonList = () => {
       })
       .catch((error) => console.log(error));
   }, [user, axiosSecure]);
+  const getRegisterdParticipants = (id) => {
+    setIsParticipants(true);
+    setRegisteredParticipants([]);
+    axiosSecure
+      .get(`/marathon/participants?id=${id}&email=${user.email}`)
+      .then((res) => {
+        if (res.data) {
+          setRegisteredParticipants(res.data);
+        } else {
+          toast.error("Something went wrong");
+        }
+      })
+      .catch((error) => console.log(error))
+      .finally(setIsParticipants(false));
+  };
+
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -66,7 +84,7 @@ const MyMarathonList = () => {
     });
   };
   if (isLoading) return <LoadingSpinner />;
-
+  console.log(registeredParticipants);
   return (
     <>
       {marathonList.length > 0 ? (
@@ -104,6 +122,7 @@ const MyMarathonList = () => {
                     index={index}
                     handleDelete={handleDelete}
                     setSpecificMarathon={setSpecificMarathon}
+                    getRegisterdParticipants={getRegisterdParticipants}
                   />
                 ))}
               </tbody>
@@ -116,6 +135,65 @@ const MyMarathonList = () => {
               setSpecificMarathon={setSpecificMarathon}
               getMarathonList={getMarathonList}
             />
+            <div>
+              <dialog id="my_modal_2" className="modal">
+                <div className="modal-box min-w-[60vw]">
+                  {isParticepants ? (
+                    <p className="text-center">
+                      <span className="loading loading-spinner loading-xl"></span>
+                    </p>
+                  ) : (
+                    <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+                      {registeredParticipants.length > 0 && !isParticepants ? (
+                        <table className="table">
+                          {/* head */}
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Photo</th>
+                              <th>Name</th>
+                              <th>Gender</th>
+                              <th>DOB</th>
+                              <th>Email</th>
+                              <th>Phone</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {registeredParticipants?.map(
+                              (participant, index) => (
+                                <tr key={participant._id}>
+                                  <td>{index + 1}</td>
+                                  <td>
+                                    <img
+                                      className="w-12 h-12 border border-slate-600"
+                                      src={participant.participantImage}
+                                      alt=""
+                                    />
+                                  </td>
+                                  <td>
+                                    {participant.firstName}{" "}
+                                    {participant.lastName}
+                                  </td>
+                                  <td>{participant.gender}</td>
+                                  <td>{participant.dob}</td>
+                                  <td>{participant.email}</td>
+                                  <td>{participant.contactNumber}</td>
+                                </tr>
+                              )
+                            )}
+                          </tbody>
+                        </table>
+                      ) : (
+                        <p className="p-5">No participants</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                  <button>close</button>
+                </form>
+              </dialog>
+            </div>
           </div>
         </div>
       ) : (

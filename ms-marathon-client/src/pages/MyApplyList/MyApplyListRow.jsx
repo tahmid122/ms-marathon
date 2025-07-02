@@ -39,7 +39,7 @@ const MyApplyListRow = ({
         <td>
           <Link
             to={`/marathon/${marathonId}`}
-            className="text-primary dark:font-bold"
+            className="text-[#422ad5] dark:text-white dark:font-bold"
           >
             View
           </Link>
